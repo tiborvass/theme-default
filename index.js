@@ -588,7 +588,7 @@ function buy() {
    console.log('buy', userAddress);
   const value = $("#buy-value").val();
   contractInstance.methods.buy().send({from: userAddress,
-                                           value: value,
+                                           value: value * 10**18,
                                            gas:100000})
   .then(function() {
     updateBalance(userAddress);
@@ -600,7 +600,7 @@ function buy() {
 
 function sell() {
   const value = $("#sell-value").val();
-  contractInstance.methods.sell(value).send({from: userAddress,gas:100000})
+  contractInstance.methods.sell(value * 10 ** 18).send({from: userAddress,gas:100000})
   .then(function() {
     updateBalance(userAddress);
     updateSellReserve();
